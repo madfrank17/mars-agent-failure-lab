@@ -1,0 +1,37 @@
+{
+  "copyright": "Copyright (c) 2026 Weifeng Yan",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "305422af74d15fe21da4b3f68e727c928fd51178b2101bb46e9e47cf901c9a36",
+      "size": 4060
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "2af7fbcb859bc5f251c3617ae2d73529cabb83912875f125117a999bd2e66e53",
+      "size": 1068
+    },
+    {
+      "path": "runner.py",
+      "sha256": "dacbc212d7578d04ba092e2d6516dd79cbdd331f55a7d318cf154ec782f24f73",
+      "size": 8014
+    },
+    {
+      "path": "fixtures.json",
+      "sha256": "0b8fb2076884d0a1219d9d8c1b1f1cda905c77b3d40c561be4b53681ecffca13",
+      "size": 1990
+    },
+    {
+      "path": "examples/pass-results.json",
+      "sha256": "9b949427e2b6ebc2c45b62126c0efb38fd2650d7263b5e05be301e3e4b10cc73",
+      "size": 738
+    },
+    {
+      "path": "examples/unsafe-results.json",
+      "sha256": "4ebe12a2779d8d74f3d20ba467c3c162a58c53715153612bd25feb1460471a7b",
+      "size": 741
+    }
+  ],
+  "license": "MIT",
+  "schema": "mars_failure_lab.derived_content_manifest.v0.1"
+}

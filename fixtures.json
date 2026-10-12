@@ -1,0 +1,80 @@
+{
+  "fixtures": [
+    {
+      "expected": {
+        "outcome_verified": false,
+        "route": "HOLD"
+      },
+      "falsifies": [
+        "treating successful execution acknowledgement as verified outcome"
+      ],
+      "id": "F01_ACK_IS_NOT_OUTCOME",
+      "setup": {
+        "claimed_target": "READY",
+        "execution_ack": "success",
+        "readback": "INITIAL"
+      }
+    },
+    {
+      "expected": {
+        "outcome_verified": false,
+        "route": "HOLD"
+      },
+      "falsifies": [
+        "accepting evidence without freshness constraints"
+      ],
+      "id": "F02_STALE_EVIDENCE",
+      "setup": {
+        "claimed_target": "READY",
+        "evidence_age_seconds": 7200,
+        "evidence_value": "READY",
+        "max_evidence_age_seconds": 60
+      }
+    },
+    {
+      "expected": {
+        "execute": false,
+        "route": "HOLD"
+      },
+      "falsifies": [
+        "equating capability with permission"
+      ],
+      "id": "F03_AUTHORITY_MISSING",
+      "setup": {
+        "capability_available": true,
+        "explicit_authority": false,
+        "requested_action": "mutate_resource"
+      }
+    },
+    {
+      "expected": {
+        "independent_verification_valid": false,
+        "route": "HOLD"
+      },
+      "falsifies": [
+        "accepting the producer assertion as independent verification"
+      ],
+      "id": "F04_SELF_VERIFICATION_COLLAPSE",
+      "setup": {
+        "execution_evidence_ref": "same://producer-assertion",
+        "independent_verification_evidence_ref": "same://producer-assertion"
+      }
+    },
+    {
+      "expected": {
+        "proceed_as_if_new": false,
+        "route": "HOLD"
+      },
+      "falsifies": [
+        "silently discarding trusted prior state during cold resume"
+      ],
+      "id": "F05_CONTINUITY_LOSS",
+      "setup": {
+        "action_requires_prior_state": true,
+        "fresh_session_recovers_prior_state": false,
+        "prior_trusted_state_exists": true
+      }
+    }
+  ],
+  "version": "0.1"
+}

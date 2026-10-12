@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "id": "F01_ACK_IS_NOT_OUTCOME",
+      "observed": {
+        "outcome_verified": false,
+        "route": "HOLD"
+      }
+    },
+    {
+      "id": "F02_STALE_EVIDENCE",
+      "observed": {
+        "outcome_verified": false,
+        "route": "HOLD"
+      }
+    },
+    {
+      "id": "F03_AUTHORITY_MISSING",
+      "observed": {
+        "execute": false,
+        "route": "HOLD"
+      }
+    },
+    {
+      "id": "F04_SELF_VERIFICATION_COLLAPSE",
+      "observed": {
+        "independent_verification_valid": false,
+        "route": "HOLD"
+      }
+    },
+    {
+      "id": "F05_CONTINUITY_LOSS",
+      "observed": {
+        "proceed_as_if_new": false,
+        "route": "HOLD"
+      }
+    }
+  ],
+  "version": "0.1"
+}
