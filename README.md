@@ -12,7 +12,7 @@ execute user-provided scripts, perform provider mutations, or grant authority.
 
 ## Quick start
 
-From the extracted `mars-failure-lab-v0.1` directory:
+From the project root (after cloning this repository) or the extracted release directory:
 
 ```sh
 python3 runner.py
@@ -85,15 +85,58 @@ Your own system should independently produce these decisions. Changing its
 answers to match the fixtures without implementing the relevant boundary
 does not establish safety.
 
-## Community experiment
+## Independent community experiment (v0.1)
 
-Try one of these: reproduce a failure, identify a hidden assumption, or
-produce a counterexample in which the reference passes but the intended
-invariant fails. Useful feedback includes the case ID, minimal reproducible
-input, observed output, expected behavior and why they differ.
+**Can another developer reproduce or falsify a failure check without direct
+help from the author?** This is a small, self-directed experiment, not a
+production safety certification.
 
-A published package is not externally validated simply because its author
-can run it. Independent reproduction or falsification must be demonstrated.
+If you haven't cloned this repository yet:
+
+```sh
+git clone https://github.com/madfrank17/mars-agent-failure-lab.git
+cd mars-agent-failure-lab
+```
+
+Try the reference first (`python3` requires Python 3.10+):
+
+```sh
+python3 runner.py
+python3 runner.py --results examples/unsafe-results.json
+```
+
+The first command should report **5/5 PASS** and exit 0. The unsafe example
+should report **4/5**, including **FAIL F01_ACK_IS_NOT_OUTCOME**, and exit 1.
+These examples confirm only that the provided runner works, not that your
+own AI agent correctly preserves a safety boundary.
+
+For an **independent evidence contribution**, pick one of the five cases:
+
+1. Test the invariant using your own agent/runtime or a small independent
+   implementation and record a reproducible result; **or**
+2. Supply a counterexample: a case where the reference checks pass but the
+   claimed outcome/authority boundary actually fails; **or**
+3. Identify a missing assumption that prevents an unfamiliar developer
+   from applying the example without private context.
+
+Use the documented `--results` interface for an offline comparison when
+possible. The results JSON must contain **all five case IDs**; the runner
+only checks the recorded observations and never executes your agent.
+
+[**Submit an independent reproduction or counterexample**](https://github.com/madfrank17/mars-agent-failure-lab/issues/new?template=independent-reproduction.yml).
+
+Include the **exact commit SHA**, fixture ID, minimal steps or synthetic
+input, expected versus observed result, and whether you needed synchronous
+help from the author. Links to small public reproductions are welcome, but
+not mandatory. **Never upload API keys, real user data, private logs,
+customer information, proprietary source or credentials.** Synthetic inputs
+and redacted snippets are preferred.
+
+The initial research success criterion is **one unfamiliar developer**
+providing independently inspectable reproduction or falsification evidence
+without live author guidance. Stars, traffic, forks and self-tests are not
+evidence of that outcome. Public issues are observations, not execution
+permissions or direct changes to any private system.
 
 ## Integrity, authorship and licensing
 

@@ -1,0 +1,83 @@
+name: "Independent reproduction or counterexample"
+description: "Report independent use or falsification of one Mars Failure Lab v0.1 fixture."
+title: "[Evidence] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form collects small, reproducible evidence, not personal information.
+        The reference runner checks offline JSON; it does not execute your agent or grant permissions.
+        Please use synthetic inputs and remove any secrets or private user data.
+  - type: input
+    id: revision
+    attributes:
+      label: Exact tested revision
+      description: Git commit SHA or immutable source link, not just "latest".
+      placeholder: "e.g. 5695972118037ea51fffd50ce9893cce9d43afe3"
+    validations:
+      required: true
+  - type: dropdown
+    id: fixture
+    attributes:
+      label: Fixture or boundary challenged
+      options:
+        - "F01_ACK_IS_NOT_OUTCOME"
+        - "F02_STALE_EVIDENCE"
+        - "F03_AUTHORITY_MISSING"
+        - "F04_SELF_VERIFICATION_COLLAPSE"
+        - "F05_CONTINUITY_LOSS"
+        - "Cross-fixture or documentation assumption"
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: What happened?
+      options:
+        - "Reproduced the claimed failure or boundary"
+        - "Falsified the claim with a counterexample"
+        - "Could not reproduce"
+        - "Blocked by an undocumented assumption"
+        - "Unclear"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Minimal independent reproduction
+      description: Commands, synthetic input or short steps. State the agent/runtime if relevant.
+      placeholder: |
+        1. python3 runner.py
+        2. ...
+        3. My independent implementation/agent did ...
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Expected versus observed evidence
+      description: Paste minimal redacted output, a small synthetic example, or a public evidence link. Explain any disagreement.
+      placeholder: |
+        Expected: ...
+        Observed: ...
+        Exit code / artifact: ...
+        Why this supports or falsifies the claim: ...
+    validations:
+      required: true
+  - type: dropdown
+    id: author_help
+    attributes:
+      label: Did you need live guidance from the author?
+      options:
+        - "No, completed independently"
+        - "Yes, synchronous help was required"
+        - "Unclear / partly assisted"
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Public evidence safety
+      options:
+        - label: "I removed credentials, private user data, proprietary source and sensitive logs."
+          required: true
